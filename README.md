@@ -1,14 +1,14 @@
+## API LINKS
+
 - API DOCS: http://fitnesstrac-kr.herokuapp.com/docs=
 - API ENDPOINTS: http://fitnesstrac-kr.herokuapp.com/api/some-endpoint
 
-
-Please See Github Workflow Below:
-
-Github Organizations and Git Workflow
-Setting up Your Github Org
+## Github Organizations and Git Workflow
+# Setting up Your Github Org
 
 Please follow the below instructions to set-up your Github organization and repo (note: only one person per team needs to do this).
-Creating a Github Organization
+
+# Creating a Github Organization
 
     Go to github
     Click the “+” button in the upper righthand corner
@@ -20,7 +20,7 @@ Creating a Github Organization
     Click “Complete set-up”
     No need to fill out this next page (“Welcome to Github”). You can scroll to the bottom and click “Submit”.
 
-Creating and Initializing your repo
+# Creating and Initializing your repo
 
     Go to your organizations homepage (eg https://github.com/graceshopper-team-awesome)
     Select the green button “Create a new repository”
@@ -38,7 +38,7 @@ Creating and Initializing your repo
     Run one more command: git push origin master or git push origin main
     Refresh your Github page and you should see your repo initialized with the boilerplate code.
 
-Protect your Master Branch
+# Protect your Master Branch
 
     From your repo’s github page, select “Settings” (rightmost option under the repo name)
     On the sidebar, select “Branches”
@@ -47,8 +47,8 @@ Protect your Master Branch
     Select two checkboxes: “Require pull request reviews before merging” and “Include administrators”.
     Finish by selecting “Create”
 
-GitHub Workflow
-Feature Branches
+## GitHub Workflow
+# Feature Branches
 
     High level overview: pull latest main, make a branch, commit changes, push to GitHub, make a PR, get it approved, merge it to main. Rinse and repeat.
     Make issue corresponding to feature
@@ -71,7 +71,7 @@ Feature Branches
     git pull
     Start the cycle again
 
-Merge Conflicts
+# Merge Conflicts
 
 GitHub has an online merge conflict resolution tool, but you can and should learn how to fix merge conflicts locally too.
 
