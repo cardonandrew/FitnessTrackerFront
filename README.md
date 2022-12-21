@@ -1,6 +1,6 @@
 # API LINKS
 
-- API DOCS: http://fitnesstrac-kr.herokuapp.com/docs=
+- API DOCS: http://fitnesstrac-kr.herokuapp.com/docs
 - API ENDPOINTS: http://fitnesstrac-kr.herokuapp.com/api/some-endpoint
     - Above where "some-endpoint", enter necessary api endpoint
 
