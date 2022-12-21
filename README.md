@@ -1,3 +1,7 @@
+- API DOCS: http://fitnesstrac-kr.herokuapp.com/docs=
+- API ENDPOINTS: http://fitnesstrac-kr.herokuapp.com/api/some-endpoint
+
+
 Please See Github Workflow Below:
 
 Github Organizations and Git Workflow
