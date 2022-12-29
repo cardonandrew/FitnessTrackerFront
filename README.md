@@ -1,4 +1,4 @@
-# API LINKS
+# API Links
 
 - API DOCS: http://fitnesstrac-kr.herokuapp.com/docs
 - API ENDPOINTS: http://fitnesstrac-kr.herokuapp.com/api/some-endpoint
