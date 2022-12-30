@@ -36,3 +36,20 @@ export async function newRoutine (rName, rGoal, rPublic) {
         console.error("Could not create new routine.", error)
     }
 }
+
+export async function updateRoutine (rId, routineParams) {
+    try {
+        const response = await fetch(`${BASEURL}/routines/${rId}`, {
+            method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${TokenString}`
+            },
+            body: JSON.stringify(routineParams)
+        })
+        const result = await response.json();
+        return result
+    } catch (error) {
+        console.error("Could not update routine.", error)
+    }
+}
