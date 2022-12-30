@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Header = (props) => {
-    const [Auth, setAuth] = useState(false);
     const [Token, setToken] = useState("");
 
     return (
