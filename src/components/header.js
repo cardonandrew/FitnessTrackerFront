@@ -9,8 +9,11 @@ const Header = (props) => {
             <Link className="item" to="/">
                 Home
             </Link>
-            <Link className="item" to="/Routines">
+            <Link className="item" to="/routines">
                 Routines
+            </Link>
+            <Link className='item' to="/activities">
+                Activities
             </Link>
             {Token ? (
                 <Link className="item" to="/Account/Dash">

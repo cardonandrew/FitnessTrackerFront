@@ -1,1 +1,9 @@
 /* https://semantic-ui.com/introduction/getting-started.html */
+
+.cards {
+    padding-left: 10%;
+}
+
+header {
+    font-size: xx-large;
+}
