@@ -14,3 +14,25 @@ export async function allRoutines () {
         console.error("Could not retrieve all routines.", error)
     }
 }
+
+export async function newRoutine (rName, rGoal, rPublic) {
+    try {
+        const response = await fetch(`${BASEURL}/routines`, {
+            method: "POST",
+            header: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${TokenString}`
+            },
+            body: JSON.stringify({
+                name: rName,
+                goal: rGoal,
+                isPublic: rPublic
+            })
+        })
+        
+        const result = await response.json();
+        return result;
+    } catch (error) {
+        console.error("Could not create new routine.", error)
+    }
+}
