@@ -53,3 +53,38 @@ export async function updateRoutine (rId, routineParams) {
         console.error("Could not update routine.", error)
     }
 }
+
+export async function deleteRoutine (rId) {
+    try {
+        const response = await fetch(`${BASEURL}/routines/${rId}`, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${TokenString}`
+            }
+        })
+
+        const result = await response.json();
+        return result;
+    } catch (error) {
+        console.error("Could not delete routine.", error)
+    }
+}
+
+export async function addActivityToRoutine (rId, actId, actCount, actDur) {
+    try {
+        const response = await fetch(`${BASEURL}/routines/${rId}/activities`, {
+            method: "POST",
+            body: JSON.stringify({
+                activityId: actId,
+                count: actCount,
+                duration: actDur
+            })
+        })
+
+        const result = await response.json();
+        return result;
+    } catch (error) {
+        console.error("Could not add activity to routine.", error)
+    }
+}
