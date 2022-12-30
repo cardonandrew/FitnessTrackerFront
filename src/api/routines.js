@@ -19,7 +19,7 @@ export async function newRoutine (rName, rGoal, rPublic) {
     try {
         const response = await fetch(`${BASEURL}/routines`, {
             method: "POST",
-            header: {
+            headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${TokenString}`
             },
@@ -75,6 +75,9 @@ export async function addActivityToRoutine (rId, actId, actCount, actDur) {
     try {
         const response = await fetch(`${BASEURL}/routines/${rId}/activities`, {
             method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify({
                 activityId: actId,
                 count: actCount,
