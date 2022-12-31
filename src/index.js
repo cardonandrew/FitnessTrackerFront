@@ -14,9 +14,8 @@ const App = () => {
     useEffect(() => {
         if (token) {
             const getCurrentUsername = async () => {
-                const user = await getCurrentUser(token)
-                setCurrentUser(user.username)
-                console.log(username)
+                const data = await getCurrentUser(token)
+                setCurrentUser(data)
             }
             getCurrentUsername();
         }

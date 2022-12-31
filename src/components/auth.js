@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'
+import { registerUser } from '../api/users';
 
 const AuthorizeUser = ({setToken}) => {
     const [username, setUsername] = useState("");
@@ -7,13 +8,14 @@ const AuthorizeUser = ({setToken}) => {
   
     const { action } = useParams();
     const history = useNavigate();
-    // console.log("action", action);
   
     const onSubmitHandler = async (event) => {
       event.preventDefault();
       try {
         const { newUser } = await registerUser(username, password);
+        console.log("newUser", newUser)
         setToken(newUser.token);
+        
         
         history.push("/");
       } catch (error) {
