@@ -9,10 +9,8 @@ export const registerUser = async (username, password) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          user: {
             username: username,
             password: password
-          },
         }),
       });
       console.log("RESPONSE->", response);
