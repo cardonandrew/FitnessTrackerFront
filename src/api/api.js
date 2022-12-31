@@ -5,5 +5,7 @@ const BASEURL = "https://fitnesstrac-kr.herokuapp.com/api";
 
 export { default as AuthorizeUser } from "./users";
 export { default as Routine_Activities } from "./routine_activities";
+export { allActivities, newActivity, updateActivity, pubRoutinesByActivity } from "./activities"
+export { allRoutines, newRoutine, updateRoutine, deleteRoutine, addActivityToRoutine } from "./routines"
 
 export default BASEURL;

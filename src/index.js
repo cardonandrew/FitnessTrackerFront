@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Link, Route, Routes, useNavigate } from "react-router-dom";
-import { Header, Home, Routines, Dashboard, AuthorizeUser, Activities } from "./components";
+import { Header, Home, Routines, Dashboard, AuthorizeUser, Activities, Activity } from "./components";
+
 
 const App = () => {
     const [user, setUser] = useState("");
@@ -21,22 +22,30 @@ const App = () => {
         user();
     }, [tokenString])
 
+    useEffect(() => {
+        if (tokenString) {
+            window.localStorage.setItem("token", tokenString);
+        }
+    }, [tokenString]);
+
     const logOut = () => {
         setTokenString("");
-        history.push("/")
+        history.push("/");
     }
     return (
         <div className="main">
             <div className="head">
                 <header>Fitness Tracker</header>
-                <Header user={user} token={tokenString} />
+                <Header user={user} token={tokenString} logout={logOut} />
             </div>
             <Routes>
-                <Route exact path="/" element={<Home />} />
-                <Route exact path="/routines" element={<Routines />} />
+                <Route path="/" element={<Home />} />
+                <Route path="/routines" element={<Routines />} />
+                <Route path="/activities" element={<Activities />} />
+                <Route exact path="/activities/:activityID" element={<Activity />} />
                 <Route exact path="/account/dash" element={<Dashboard />} />
                 <Route exact path="/account/:action" element={<AuthorizeUser />} />
-                <Route path="/activities/:postID" element={<Activities />} />
+                
             </Routes>
 
             {/* <Footer /> */}
