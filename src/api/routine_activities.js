@@ -3,9 +3,9 @@ import BASEURL from './api';
 
 
 // delete public.routine_activities based on routine ID
-export async function deleteRoutineActivitybyRoutineId (routineId) {
+export async function deleteRoutineActivitybyRoutineId (routineActivityId) {
   try {
-      const response = await fetch(`${BASEURL}/routineactivities/${routineId}`, {
+      const response = await fetch(`${BASEURL}/routine_activities/${routineActivityId}`, {
           method: "DELETE",
           headers: {
               'Content-Type': 'application/json',
@@ -23,7 +23,7 @@ export async function deleteRoutineActivitybyRoutineId (routineId) {
 //be able to update the duration or count of any activity on the routine
 export async function updateRoutineActivity (routineActivityId, updateFields) {
   try {
-      const response = await fetch(`${BASEURL}/routineActivityId/${routineActivityId, updateFields}`, {
+      const response = await fetch(`${BASEURL}/routine_activities/${routineActivityId}`, {
           method: "PATCH",
           headers: {
               'Content-Type': 'application/json',
@@ -42,29 +42,10 @@ export async function updateRoutineActivity (routineActivityId, updateFields) {
   }
 }
 
-
-//delete public.routine_activities based on activity ID
-export async function deleteRoutineActivitybyActivityId (activityId) {
-  try {
-      const response = await fetch(`${BASEURL}/routineactivities/${activityId}`, {
-          method: "DELETE",
-          headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${TokenString}`
-          }
-      })
-
-      const result = await response.json();
-      return result;
-  } catch (error) {
-      console.error("Could not delete routine activity based on activity ID.", error)
-  }
-}
-
 // get count and duration based on activity ID or routine ID
 export async function getCountAndDuration (token) {
   try {
-    const response = await fetch(`${BASEURL}/routineactivities/info`, {
+    const response = await fetch(`${BASEURL}/routine_activities/info`, {
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${token}`,
