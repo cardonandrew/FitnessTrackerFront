@@ -12,10 +12,9 @@ const AuthorizeUser = ({setToken}) => {
     const onSubmitHandler = async (event) => {
       event.preventDefault();
       try {
-        const { newUser } = await registerUser(username, password);
+        const newUser = await registerUser(username, password);
         console.log("newUser", newUser)
         setToken(newUser.token);
-        
         
         history.push("/");
       } catch (error) {

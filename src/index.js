@@ -19,7 +19,7 @@ const App = () => {
             }
             getCurrentUsername();
         }
-    }, token);
+    }, [token]);
 
     useEffect(() => {
         if (token) {
