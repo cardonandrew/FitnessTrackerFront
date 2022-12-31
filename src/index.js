@@ -8,29 +8,29 @@ import { Header, Home, Routines, Dashboard, AuthorizeUser, Activities } from "./
 
 const App = () => {
     const history = useNavigate();
-    const [token, setToken] = useState(window.localStorage.getItem("token") || null);
-    const [currentUser, setCurrentUser] = useState(null)
+    const [tokenString, setTokenString] = useState(window.localStorage.getItem("token") || null);
+    const [user, setUser] = useState(null)
 
     useEffect(() => {
-        if (token) {
-            const getCurrentUsername = async () => {
-                const data = await getCurrentUser(token)
-                setCurrentUser(data)
+        if (tokenString) {
+            const getUsername = async () => {
+                const data = await getCurrentUser(tokenString)
+                setUser(data)
             }
-            getCurrentUsername();
+            getUsername();
         }
-    }, [token]);
+    }, [tokenString]);
 
     useEffect(() => {
-        if (token) {
-          window.localStorage.setItem("token", token);
+        if (tokenString) {
+          window.localStorage.setItem("token", tokenString);
         } else {
           window.localStorage.removeItem("token");
         }
-      }, [token]);
+      }, [tokenString]);
 
     const logOut = () => {
-        setToken("");
+        setTokenString("");
         setCurrentUser(null);
         history.push("/");
     };
@@ -39,14 +39,14 @@ const App = () => {
         <div className="main">
             <div className="head">
                 <header>Fitness Tracker</header>
-                <Header token={token} />
+                <Header tokenString={tokenString} user={user} />
             </div>
             <Routes>
                 <Route exact path="/" element={<Home />} />
-                <Route exact path="/routines" element={<Routines token={token}/>} />
-                <Route exact path="/account/dash" element={<Dashboard token={token}/>} />
-                <Route exact path="/account/:action" element={<AuthorizeUser setToken={setToken} token={token} />} /> 
-                <Route path="/activities/:postID" element={<Activities token={token}/>} />    
+                <Route exact path="/routines" element={<Routines tokenString={tokenString}/>} />
+                <Route exact path="/account/dash" element={<Dashboard tokenString={tokenString}/>} />
+                <Route exact path="/account/:action" element={<AuthorizeUser setTokenString={setTokenString} tokenString={tokenString} />} /> 
+                <Route path="/activities/:postID" element={<Activities tokenString={tokenString}/>} /> 
             </Routes>
 
             {/* <Footer /> */}
