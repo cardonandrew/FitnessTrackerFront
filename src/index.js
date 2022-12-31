@@ -39,14 +39,14 @@ const App = () => {
         <div className="main">
             <div className="head">
                 <header>Fitness Tracker</header>
-                <Header />
+                <Header token={token} />
             </div>
             <Routes>
                 <Route exact path="/" element={<Home />} />
-                <Route exact path="/routines" element={<Routines />} />
-                <Route exact path="/account/dash" element={<Dashboard />} />
-                <Route exact path="/account/:action" element={<AuthorizeUser />} /> 
-                <Route path="/activities/:postID" element={<Activities />} />    
+                <Route exact path="/routines" element={<Routines token={token}/>} />
+                <Route exact path="/account/dash" element={<Dashboard token={token}/>} />
+                <Route exact path="/account/:action" element={<AuthorizeUser setToken={setToken} token={token} />} /> 
+                <Route path="/activities/:postID" element={<Activities token={token}/>} />    
             </Routes>
 
             {/* <Footer /> */}
