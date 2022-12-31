@@ -6,6 +6,7 @@ import { getCurrentUser } from "./api/users";
 import { Header, Home, Routines, Dashboard, AuthorizeUser, Activities } from "./components";
 
 
+
 const App = () => {
     const history = useNavigate();
     const [tokenString, setTokenString] = useState(window.localStorage.getItem("token") || null);
@@ -29,11 +30,18 @@ const App = () => {
         }
       }, [tokenString]);
 
+    useEffect(() => {
+        if (tokenString) {
+            window.localStorage.setItem("token", tokenString);
+        }
+    }, [tokenString]);
+
     const logOut = () => {
         setTokenString("");
         setCurrentUser(null);
-        history.push("/");
+        history("/");
     };
+
 
     return (
         <div className="main">
