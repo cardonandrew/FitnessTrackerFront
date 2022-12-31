@@ -41,21 +41,3 @@ export async function updateRoutineActivity (routineActivityId, updateFields) {
       console.error("Could not update the duration or count of any activity on the routine.", error)
   }
 }
-
-// get count and duration based on activity ID or routine ID
-export async function getCountAndDuration (token) {
-  try {
-    const response = await fetch(`${BASEURL}/routine_activities/info`, {
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
-      },
-    });
-    console.log("ROUTINE ACTIVITY RESP BODY ->", response);
-    const { data } = await response.json();
-    console.log("ROUTINE ACTIVITY DATA ->", data);
-    return data;
-  } catch {
-    console.log(error);
-  }
-};
