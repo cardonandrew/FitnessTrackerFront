@@ -53,8 +53,8 @@ const App = () => {
                 <Route exact path="/" element={<Home />} />
                 <Route exact path="/routines" element={<Routines tokenString={tokenString}/>} />
                 <Route exact path="/account/dash" element={<Dashboard tokenString={tokenString}/>} />
-                <Route exact path="/account/:action" element={<AuthorizeUser setTokenString={setTokenString} tokenString={tokenString} />} /> 
-                <Route path="/activities/:postID" element={<Activities tokenString={tokenString}/>} /> 
+                <Route exact path="/account/:action" element={<AuthorizeUser setTokenString={setTokenString} tokenString={tokenString} />} />
+                <Route path="/activities" element={<Activities tokenString={tokenString}/>} /> 
             </Routes>
 
             {/* <Footer /> */}
