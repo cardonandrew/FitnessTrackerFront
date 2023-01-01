@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'
-import { registerUser } from '../api/users';
+import { getCurrentUser, registerUser, loginUser } from '../api/users';
 
-const AuthorizeUser = ({setToken}) => {
+const AuthorizeUser = ({setTokenString}) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
   
@@ -12,11 +12,17 @@ const AuthorizeUser = ({setToken}) => {
     const onSubmitHandler = async (event) => {
       event.preventDefault();
       try {
-        const newUser = await registerUser(username, password);
-        console.log("newUser", newUser)
-        setToken(newUser.token);
+        const oldUser = await loginUser(username, password);
+        setTokenString(oldUser.token)
+
+        if (!oldUser.token){
+            const newUser = await registerUser(username, password)
+            setTokenString(newUser.token)
+        }
+        console.log("token", oldUser.token)
         
-        history.push("/");
+
+        history("/");
       } catch (error) {
         console.error(error);
       }
