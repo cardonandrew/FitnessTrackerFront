@@ -3,7 +3,7 @@ import BASEURL from './api';
 
 
 // delete public.routine_activities based on routine ID
-export async function deleteRoutineActivitybyRoutineId (routineActivityId) {
+async function deleteR_ActbyRoutineId (routineActivityId) {
   try {
       const response = await fetch(`${BASEURL}/routine_activities/${routineActivityId}`, {
           method: "DELETE",
@@ -16,12 +16,12 @@ export async function deleteRoutineActivitybyRoutineId (routineActivityId) {
       const result = await response.json();
       return result;
   } catch (error) {
-      console.error("Could not delete routine activity based on routine ID.", error)
+      console.error("Could not delete routine activity", error)
   }
 }
 
 //be able to update the duration or count of any activity on the routine
-export async function updateRoutineActivity (routineActivityId, updateFields) {
+async function updateRoutineActivity (routineActivityId, updateFields) {
   try {
       const response = await fetch(`${BASEURL}/routine_activities/${routineActivityId}`, {
           method: "PATCH",
@@ -38,6 +38,8 @@ export async function updateRoutineActivity (routineActivityId, updateFields) {
       const result = await response.json();
       return result;
   } catch (error) {
-      console.error("Could not update the duration or count of any activity on the routine.", error)
+      console.error("Could not update the Routine Activity", error)
   }
 }
+
+export { deleteR_ActbyRoutineId, updateRoutineActivity };

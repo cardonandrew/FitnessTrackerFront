@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import BASEURL from './api';
 
-export async function allRoutines () {
+async function allRoutines () {
     try {
         const response = await fetch(`${BASEURL}/routines`, {
             headers: {
@@ -15,7 +15,7 @@ export async function allRoutines () {
     }
 }
 
-export async function newRoutine (rName, rGoal, rPublic) {
+async function newRoutine (rName, rGoal, rPublic) {
     try {
         const response = await fetch(`${BASEURL}/routines`, {
             method: "POST",
@@ -37,7 +37,7 @@ export async function newRoutine (rName, rGoal, rPublic) {
     }
 }
 
-export async function updateRoutine (rId, routineParams) {
+async function updateRoutine (rId, routineParams) {
     try {
         const response = await fetch(`${BASEURL}/routines/${rId}`, {
             method: "PATCH",
@@ -54,7 +54,7 @@ export async function updateRoutine (rId, routineParams) {
     }
 }
 
-export async function deleteRoutine (rId) {
+async function deleteRoutine (rId) {
     try {
         const response = await fetch(`${BASEURL}/routines/${rId}`, {
             method: "DELETE",
@@ -71,7 +71,7 @@ export async function deleteRoutine (rId) {
     }
 }
 
-export async function addActivityToRoutine (rId, actId, actCount, actDur) {
+async function addActivityToRoutine (rId, actId, actCount, actDur) {
     try {
         const response = await fetch(`${BASEURL}/routines/${rId}/activities`, {
             method: "POST",
@@ -91,3 +91,6 @@ export async function addActivityToRoutine (rId, actId, actCount, actDur) {
         console.error("Could not add activity to routine.", error)
     }
 }
+
+
+export { allRoutines, newRoutine, updateRoutine, deleteRoutine, addActivityToRoutine };

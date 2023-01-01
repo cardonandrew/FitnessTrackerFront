@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import BASEURL from './api';
 
-export async function allActivities () {
+async function allActivities () {
     try {
         const response = await fetch(`${BASEURL}/activities`, {
             headers: {
@@ -15,8 +15,7 @@ export async function allActivities () {
         console.error("Could not retrieve Activities.", error)
     }
 }
-
-export async function newActivity (actName, actDesc) {
+async function newActivity (actName, actDesc) {
     try {
         const response = await fetch(`${BASEURL}/activities`, {
             method: "POST",
@@ -37,7 +36,7 @@ export async function newActivity (actName, actDesc) {
     }
 }
 
-export async function updateActivity (actId, actName, actDesc) {
+async function updateActivity (actId, actName, actDesc) {
     try {
         const response = await fetch(`${BASEURL}/activities/${actId}`, {
             method: "PATCH",
@@ -58,7 +57,7 @@ export async function updateActivity (actId, actName, actDesc) {
     }
 }
 
-export async function pubRoutinesByActivity (actId) {
+async function pubRoutinesByActivity (actId) {
     try {
         const response = await fetch(`${BASEURL}/activities/${actId}/routines`, {
             headers: {
@@ -72,3 +71,5 @@ export async function pubRoutinesByActivity (actId) {
         console.error("Could not retrieve public routines by activity.", error)
     }
 }
+
+export { allActivities, newActivity, updateActivity, pubRoutinesByActivity };

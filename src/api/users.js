@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import BASEURL from './api';
 
-export const registerUser = async (username, password) => {
+export const registerUser = async (username, password, action) => {
     try {
-      const response = await fetch(`${BASEURL}/users/register`, {
+      const response = await fetch(`${BASEURL}/users/${action}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -13,9 +13,8 @@ export const registerUser = async (username, password) => {
             password: password
         }),
       });
-      console.log("RESPONSE->", response);
+
       const data = await response.json();
-      console.log("data", data);
       return data;
     } catch (error) {
       console.error("There was an error registering the user", error);
@@ -30,11 +29,12 @@ export const registerUser = async (username, password) => {
           "Authorization": `Bearer ${token}`,
         },
       });
-      console.log("USER RESP BODY ->", response);
-      const { data } = await response.json();
-      console.log("USER DATA ->", data);
+
+      const data = await response.json();
       return data;
     } catch {
-      console.log(error);
+      console.error("Could not retrieve user",error);
     }
   };
+
+  
