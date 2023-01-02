@@ -5,3 +5,4 @@ export { default as Activities } from "./activities";
 export { default as Dashboard } from "./account";
 export { default as AuthorizeUser } from "./auth";
 export { default as Activity } from "./activity";
+export { default as Popup } from "./popup"
