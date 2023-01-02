@@ -6,17 +6,23 @@ import { getCurrentUser } from "./api/users";
 import { Header, Home, Routines, Dashboard, AuthorizeUser, Activities } from "./components";
 
 
-
 const App = () => {
     const history = useNavigate();
     const [tokenString, setTokenString] = useState(window.localStorage.getItem("token") || null);
     const [user, setUser] = useState(null)
 
+    const logOut = () => {
+        setTokenString("");
+        setUser(null);
+        history("/");
+    };
+
     useEffect(() => {
         if (tokenString) {
             const getUsername = async () => {
                 const data = await getCurrentUser(tokenString)
-                setUser(data.username)
+                if(data){setUser(data.username)
+                console.log("username:", data.username)}
             }
             getUsername();
         }
@@ -36,18 +42,11 @@ const App = () => {
         }
     }, [tokenString]);
 
-    const logOut = () => {
-        setTokenString("");
-        setCurrentUser(null);
-        history("/");
-    };
-
-
     return (
         <div className="main">
             <div className="head">
                 <header>Fitness Tracker</header>
-                <Header tokenString={tokenString} user={user} />
+                <Header tokenString={tokenString} user={user} logOut={logOut}/>
             </div>
             <Routes>
                 <Route exact path="/" element={<Home />} />
