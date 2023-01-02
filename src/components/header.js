@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Header = (props) => {
-    const [Token, setToken] = useState("");
+    const {tokenString, user, logOut} = props
 
     return (
         <div className="ui menu">
@@ -15,13 +15,13 @@ const Header = (props) => {
             <Link className='item' to="/activities">
                 Activities
             </Link>
-            {Token ? (
+            {tokenString ? (
                 <Link className="item" to="/Account/Dash">
                     Account
                 </Link>
             ) : null}
-            {Token ? (
-                <Link className="item" to="/" /*onClick={}*/>
+            {tokenString ? (
+                <Link className="item" to="/" onClick={logOut}>
                     Log Out
                 </Link>
             ) : (
@@ -29,7 +29,7 @@ const Header = (props) => {
                     Log In
                 </Link>
             )}
-            {Token ? null : (
+            {tokenString ? null : (
                 <Link className="item" to="/Account/register">
                     Sign Up
                 </Link>

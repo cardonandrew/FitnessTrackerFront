@@ -29,7 +29,7 @@ export const registerUser = async (username, password, action) => {
           "Authorization": `Bearer ${token}`,
         },
       });
-
+      
       const data = await response.json();
       return data;
     } catch {
