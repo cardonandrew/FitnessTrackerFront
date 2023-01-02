@@ -3,9 +3,9 @@ import BASEURL from './api';
 
 
 // delete public.routine_activities based on routine ID
-export async function deleteRoutineActivitybyRoutineId (routineId) {
+async function deleteR_ActbyRoutineId (routineActivityId) {
   try {
-      const response = await fetch(`${BASEURL}/routineactivities/${routineId}`, {
+      const response = await fetch(`${BASEURL}/routine_activities/${routineActivityId}`, {
           method: "DELETE",
           headers: {
               'Content-Type': 'application/json',
@@ -16,14 +16,14 @@ export async function deleteRoutineActivitybyRoutineId (routineId) {
       const result = await response.json();
       return result;
   } catch (error) {
-      console.error("Could not delete routine activity based on routine ID.", error)
+      console.error("Could not delete routine activity", error)
   }
 }
 
 //be able to update the duration or count of any activity on the routine
-export async function updateRoutineActivity (routineActivityId, updateFields) {
+async function updateRoutineActivity (routineActivityId, updateFields) {
   try {
-      const response = await fetch(`${BASEURL}/routineActivityId/${routineActivityId, updateFields}`, {
+      const response = await fetch(`${BASEURL}/routine_activities/${routineActivityId}`, {
           method: "PATCH",
           headers: {
               'Content-Type': 'application/json',
@@ -38,43 +38,8 @@ export async function updateRoutineActivity (routineActivityId, updateFields) {
       const result = await response.json();
       return result;
   } catch (error) {
-      console.error("Could not update the duration or count of any activity on the routine.", error)
+      console.error("Could not update the Routine Activity", error)
   }
 }
 
-
-//delete public.routine_activities based on activity ID
-export async function deleteRoutineActivitybyActivityId (activityId) {
-  try {
-      const response = await fetch(`${BASEURL}/routineactivities/${activityId}`, {
-          method: "DELETE",
-          headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${TokenString}`
-          }
-      })
-
-      const result = await response.json();
-      return result;
-  } catch (error) {
-      console.error("Could not delete routine activity based on activity ID.", error)
-  }
-}
-
-// get count and duration based on activity ID or routine ID
-export async function getCountAndDuration (token) {
-  try {
-    const response = await fetch(`${BASEURL}/routineactivities/info`, {
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
-      },
-    });
-    console.log("ROUTINE ACTIVITY RESP BODY ->", response);
-    const { data } = await response.json();
-    console.log("ROUTINE ACTIVITY DATA ->", data);
-    return data;
-  } catch {
-    console.log(error);
-  }
-};
+export { deleteR_ActbyRoutineId, updateRoutineActivity };
