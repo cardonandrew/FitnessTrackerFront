@@ -16,7 +16,7 @@ const AuthorizeUser = ({setTokenString}) => {
         setTokenString(oldUser.token)
 
         if (!oldUser.token){
-            const newUser = await registerUser(username, password)
+            const newUser = await registerUser(username, password, action)
             setTokenString(newUser.token)
         }
         console.log("token", oldUser.token)
