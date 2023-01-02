@@ -29,4 +29,16 @@ header {
     background-color: black;
 }
 
+#footer {
+    display: flex;
+    justify-content: space-between;
+    background-color: dimgray;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
 
+.footlinks > img {
+    height: 3vmax;
+}
