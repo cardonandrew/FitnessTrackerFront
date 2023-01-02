@@ -36,13 +36,6 @@ const App = () => {
         }
       }, [tokenString]);
 
-
-    const logOut = () => {
-        setTokenString("");
-        setUser(null);
-        history("/");
-    };
-
     return (
         <div className="main">
             <div className="head">
