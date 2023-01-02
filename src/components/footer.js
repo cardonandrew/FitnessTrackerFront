@@ -4,7 +4,7 @@ import GIT from "./images/gitlink.png";
 
 const Footer = () => {
     return (
-        <footer id="footer" className="container">
+        <footer id="footer">
             <a className="footlinks" href="https://fullstackacademy.com" target="_blank">
                 <img src={FSA} alt="Fullstack Academy" />
             </a>
