@@ -36,12 +36,6 @@ const App = () => {
         }
       }, [tokenString]);
 
-    useEffect(() => {
-        if (tokenString) {
-            window.localStorage.setItem("token", tokenString);
-        }
-    }, [tokenString]);
-
     return (
         <div className="main">
             <div className="head">
