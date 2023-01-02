@@ -1,9 +1,44 @@
-/* https://semantic-ui.com/introduction/getting-started.html */
-
 .cards {
     padding-left: 10%;
 }
 
 header {
+    margin-top: 2vw;
     font-size: xx-large;
+    text-align: center;
+}
+
+.homeSlide {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.slide-caption {
+    font-size: x-large;
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.slides {
+    background-color: black;
+}
+
+#footer {
+    display: flex;
+    justify-content: space-between;
+    background-color: dimgray;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.footlinks > img {
+    height: 3vmax;
 }

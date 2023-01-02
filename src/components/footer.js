@@ -1,18 +1,21 @@
-
 import React from "react";
+import FSA from "./images/FSA.png";
+import GIT from "./images/gitlink.png";
 
-function footer () {
+const Footer = () => {
     return (
-        <div className="footerLogo">
-            <div className="fullstackLogo">
-                <img src="https://s3.us-east-1.amazonaws.com/fsa2-assets/assets/Logos/fullstack-academy-logo-full-color-rgb.jpg" alt="Fullstack Logo" />
-            </div>
-        
-            <div className="githubLogo">
-                <img src="https://1000logos.net/wp-content/uploads/2021/05/GitHub-logo.png" alt="Github Logo" />
-            </div>
-        </div>
+        <footer id="footer">
+            <a className="footlinks" href="https://fullstackacademy.com" target="_blank">
+                <img src={FSA} alt="Fullstack Academy" />
+            </a>
+            <a
+                className="footlinks"
+                href="https://github.com/cardonandrew/FitnessTrackerFront"
+                target="_blank">
+                <img src={GIT} alt="My Repository" />
+            </a>
+        </footer>
     );
-}
+};
 
-export default footer;
+export default Footer;
