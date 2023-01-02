@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { allRoutines } from "../api";
+import { allRoutines } from "../api/api";
 
 const Routines = () => {
     const [routines, setRoutines] = useState([]);
