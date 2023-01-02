@@ -30,15 +30,9 @@ const App = () => {
         }
       }, [tokenString]);
 
-    useEffect(() => {
-        if (tokenString) {
-            window.localStorage.setItem("token", tokenString);
-        }
-    }, [tokenString]);
-
     const logOut = () => {
         setTokenString("");
-        setCurrentUser(null);
+        setUser(null);
         history("/");
     };
 
