@@ -6,7 +6,7 @@ const CreateAct = (props) => {
     const { createTrigger, setCreateTrigger, user, tokenString } = props
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
-    console.log("title", title, "desc", description)
+    
 
 async function handleSubmit (event) {
     console.log(tokenString)
