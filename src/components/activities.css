@@ -1,0 +1,17 @@
+#addbutton{
+    display: flex;
+    text-align: center;
+    margin-top:10px;
+    margin-bottom:30px;
+    min-width: 10vh;
+    max-width: 20vh;
+
+}
+
+.activities{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width:100%;
+}
