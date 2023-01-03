@@ -13,7 +13,7 @@ const AuthorizeUser = ({setTokenString}) => {
       event.preventDefault();
       try {
         const oldUser = await registerUser(username, password, action)
-        setTokenString(newUser.token)
+        setTokenString(oldUser.token)
 
         if (!oldUser.token) {
             const newUser = await registerUser(username, password, action)
