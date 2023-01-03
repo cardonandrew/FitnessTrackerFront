@@ -8,6 +8,7 @@ import yoga from "./images/yoga.jpg";
 
 
 const Home = (props) => {
+    const {user} = props
 
     const slideShow = [
         {
@@ -30,6 +31,7 @@ const Home = (props) => {
 
     return (
         <div className="homePage">
+            {((user) ? (<h1>Hey, {user}!</h1>):"")}
             <div className="slide-container slides">
                 <Slide>
                     {slideShow.map((slide, index) => (
