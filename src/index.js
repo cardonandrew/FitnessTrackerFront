@@ -21,8 +21,7 @@ const App = () => {
         if (tokenString) {
             const getUsername = async () => {
                 const data = await getCurrentUser(tokenString)
-                if(data){setUser(data.username)
-                    console.log("username:", data.username)}
+                if(data){setUser(data.username)}
                 }
             
             getUsername();
