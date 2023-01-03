@@ -14,14 +14,14 @@ async function handleSubmit (event) {
     event.preventDefault();
 
     if (title.length === 0 || description.length === 0 ) {
-        setMessage("Error. Name/Description fields cannot be empty.")
+        setMessage("Error: Name/Description fields cannot be empty.")
         setSuccess(false);
         return; }
 
     const createdAct = await newActivity(tokenString, title, description)
     
     if (createdAct.error) {
-        setMessage("Error. Could not create Activity.")
+        setMessage(`Error: ${createdAct.error}`)
         setSuccess(false)
     }
     else if (createdAct.id) {
