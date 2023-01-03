@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { allRoutines } from "../api/api";
 
-const Routines = () => {
+const Routines = (props) => {
+    const { tokenString, user } = props;
     const [routines, setRoutines] = useState([]);
 
     useEffect(() => {
@@ -35,16 +36,19 @@ const Routines = () => {
         <div className="routines">
             <div className="ui cards">
                 {routines.map((routine) => {
-                    return (
+                    if (routine.isPublic === true) {
+                        return (
                         <fieldset key={routine.id} className="ui card">
                             <div className="content">
                                 <h3 className="header">{routine.name}</h3>
                                 <p className="goal">{routine.goal}</p>
-                                <p className="creator">Author: {routine.author}</p>
-                                {props.username === v.author.username ? <button className="viewActBtn" onClick={()=>viewActivityHandler(v)}>View Activity</button>: <div></div>}
+                                <p className="creator">Author: {routine.creatorName}</p>
+                                {user === routine.creatorName ? <button className="viewActBtn" onClick={()=>viewActivityHandler(v)}>View Activity</button>: <div></div>}
                             </div>
                         </fieldset>
                     );
+                }
+                    
                 })}
             </div>
         </div>
