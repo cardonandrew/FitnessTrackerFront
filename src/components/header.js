@@ -16,11 +16,6 @@ const Header = (props) => {
                 Activities
             </Link>
             {tokenString ? (
-                <Link className="item" to="/Account/Dash">
-                    Account
-                </Link>
-            ) : null}
-            {tokenString ? (
                 <Link className="item" to="/" onClick={logOut}>
                     Log Out
                 </Link>

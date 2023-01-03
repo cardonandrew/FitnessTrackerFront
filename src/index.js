@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Link, Route, Routes, useNavigate } from "react-router-dom";
 import { getCurrentUser } from "./api/api";
-import { Header, Home, Routines, Dashboard, AuthorizeUser, Activities, Footer } from "./components";
+import { Header, Home, Routines, AuthorizeUser, Activities, Footer } from "./components";
 
 
 const App = () => {
@@ -45,7 +45,6 @@ const App = () => {
             <Routes>
                 <Route exact path="/" element={<Home />} />
                 <Route exact path="/routines" element={<Routines tokenString={tokenString}/>} />
-                <Route exact path="/account/dash" element={<Dashboard tokenString={tokenString}/>} />
                 <Route exact path="/account/:action" element={<AuthorizeUser setTokenString={setTokenString} tokenString={tokenString} />} />
                 <Route path="/activities" element={<Activities tokenString={tokenString}/>} />
             </Routes>
