@@ -18,6 +18,11 @@ header {
     margin-right: auto;
     width: 40%;
     margin-top: 10px;
+}
+
+.new-routine {
+    display: flex;
+    justify-content: center;
     margin-bottom: 10px;
 }
 

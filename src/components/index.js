@@ -6,4 +6,5 @@ export { default as AuthorizeUser } from "./auth";
 export { default as Activity } from "./activity";
 export { default as Popup } from "./popup"
 export { default as Footer } from "./footer";
+export { default as NewRoutineModal } from "./NewRoutineForm";
 export { default as CreateAct } from "./createActivity"
