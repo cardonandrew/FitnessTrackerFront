@@ -46,7 +46,7 @@ const Activities = (props) => {
                         <div key={activity.id} className="ui card">
                             <div className="content">
                                 <div className="header">{activity.name}</div>
-                                <div className="meta">Activity#: {activity.id}</div>
+                                <span className="meta">id: {activity.id}</span>
                                 <div className="description">{activity.description}</div>
                                 <button className="ui button" onClick={() => {handlePubRoutines(activity.id), setTrigger(true)}} >Routines including this workout</button>
                                 <Popup trigger={trigger} setTrigger={setTrigger} pubRoutines={pubRoutines}>Routines with this Activity:</Popup>
