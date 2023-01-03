@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'
 import { getCurrentUser, registerUser } from '../api/users';
 
-const AuthorizeUser = ({setTokenString}) => {
+const AuthorizeUser = (props) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
   
+    const {setTokenString} = props
     const { action } = useParams();
     const history = useNavigate();
   

@@ -15,7 +15,7 @@ async function allActivities () {
         console.error("Could not retrieve Activities.", error)
     }
 }
-async function newActivity (actName, actDesc) {
+async function newActivity (TokenString, actName, actDesc) {
     try {
         const response = await fetch(`${BASEURL}/activities`, {
             method: "POST",
