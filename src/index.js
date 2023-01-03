@@ -21,8 +21,7 @@ const App = () => {
         if (tokenString) {
             const getUsername = async () => {
                 const data = await getCurrentUser(tokenString)
-                if(data){setUser(data.username)
-                    console.log("username:", data.username)}
+                if(data){setUser(data.username)}
                 }
             
             getUsername();
@@ -44,9 +43,9 @@ const App = () => {
                 <Header tokenString={tokenString} user={user} logOut={logOut}/>
             </div>
             <Routes>
-                <Route exact path="/" element={<Home />} />
+                <Route exact path="/" element={<Home user={user}/>} />
                 <Route exact path="/routines" element={<Routines tokenString={tokenString} user={user} />} />
-                <Route exact path="/account/:action" element={<AuthorizeUser setTokenString={setTokenString} tokenString={tokenString} />} />
+                <Route exact path="/account/:action" element={<AuthorizeUser setTokenString={setTokenString} tokenString={tokenString} user={user}/>} />
                 <Route path="/activities" element={<Activities tokenString={tokenString} user={user}/>} />
             </Routes>
 
