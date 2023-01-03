@@ -6,17 +6,33 @@ const CreateAct = (props) => {
     const { createTrigger, setCreateTrigger, user, tokenString } = props
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
+    const [success, setSuccess] = useState(null);
+    const [message, setMessage] = useState("");
     
 
 async function handleSubmit (event) {
-    console.log(tokenString)
-    event.preventDefault()
-        if (title.length > 0 && description.length > 0) {
-            const data = await newActivity(tokenString, title, description)
-            if (data) {console.log("new activity created", data)}
-        }
-    }
+    event.preventDefault();
 
+    if (title.length === 0 || description.length === 0 ) {
+        setMessage("Error. Name/Description fields cannot be empty.")
+        setSuccess(false);
+        return; }
+
+    const createdAct = await newActivity(tokenString, title, description)
+    
+    if (createdAct.error) {
+        setMessage("Error. Could not create Activity.")
+        setSuccess(false)
+    }
+    else if (createdAct.id) {
+        setMessage("Success! An Activity has been created.")
+        setSuccess(true)
+    }
+    
+    }
+    if(success){setCreateTrigger(false)}
+    
+    
     if(user) {
         return (props.createTrigger) ? (
     <div className="popup">
@@ -31,7 +47,8 @@ async function handleSubmit (event) {
                     <input onChange={(e) => setDescription(e.target.value)}></input>
                     </div>
                 <button className="ui button" type="submit">Create</button>
-                
+                {success ? (<div style={{'color': 'green'}}>{message}</div>) : null}
+                 {!success ? <div style={{'color': 'red'}}>{message}</div> : null}
             </form>
     
         </div>
