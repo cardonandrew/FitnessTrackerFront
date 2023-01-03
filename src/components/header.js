@@ -5,7 +5,7 @@ const Header = (props) => {
     const {tokenString, user, logOut} = props
 
     return (
-        <div className="ui menu">
+        <div className="ui menu" style={{'marginBottom': '20px'}}>
             <Link className="item" to="/">
                 Home
             </Link>

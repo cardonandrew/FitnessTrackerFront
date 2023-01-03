@@ -8,6 +8,10 @@ header {
     text-align: center;
 }
 
+.headerComponent {
+    margin-bottom: 20px;
+}
+
 .homeSlide {
     display: block;
     margin-left: auto;
@@ -33,10 +37,11 @@ header {
     display: flex;
     justify-content: space-between;
     background-color: dimgray;
-    position: fixed;
+    position: relative;
     bottom: 0;
     right: 0;
     left: 0;
+    margin-top: 50px;
 }
 
 .footlinks > img {
