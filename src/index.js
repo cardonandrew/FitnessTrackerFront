@@ -22,8 +22,9 @@ const App = () => {
             const getUsername = async () => {
                 const data = await getCurrentUser(tokenString)
                 if(data){setUser(data.username)
-                console.log("username:", data.username)}
-            }
+                    console.log("username:", data.username)}
+                }
+            
             getUsername();
         }
     }, [tokenString]);
@@ -36,6 +37,12 @@ const App = () => {
         }
       }, [tokenString]);
 
+    useEffect(() => {
+        if (tokenString) {
+            window.localStorage.setItem("token", tokenString);
+        }
+    }, [tokenString]);
+
     return (
         <div className="main">
             <div className="head">
@@ -46,7 +53,7 @@ const App = () => {
                 <Route exact path="/" element={<Home />} />
                 <Route exact path="/routines" element={<Routines tokenString={tokenString}/>} />
                 <Route exact path="/account/:action" element={<AuthorizeUser setTokenString={setTokenString} tokenString={tokenString} />} />
-                <Route path="/activities" element={<Activities tokenString={tokenString}/>} />
+                <Route path="/activities" element={<Activities tokenString={tokenString} user={user}/>} />
             </Routes>
 
             <Footer />
