@@ -15,7 +15,7 @@ async function allRoutines () {
     }
 }
 
-async function newRoutine (rName, rGoal, rPublic) {
+async function newRoutine (rName, rGoal, rPublic, TokenString) {
     try {
         const response = await fetch(`${BASEURL}/routines`, {
             method: "POST",
