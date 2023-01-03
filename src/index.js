@@ -44,7 +44,7 @@ const App = () => {
             </div>
             <Routes>
                 <Route exact path="/" element={<Home />} />
-                <Route exact path="/routines" element={<Routines tokenString={tokenString}/>} />
+                <Route exact path="/routines" element={<Routines tokenString={tokenString} user={user} />} />
                 <Route exact path="/account/:action" element={<AuthorizeUser setTokenString={setTokenString} tokenString={tokenString} />} />
                 <Route path="/activities" element={<Activities tokenString={tokenString}/>} />
             </Routes>
