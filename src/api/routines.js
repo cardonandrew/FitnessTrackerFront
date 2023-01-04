@@ -54,7 +54,7 @@ async function updateRoutine (rId, routineParams) {
     }
 }
 
-async function deleteRoutine (rId) {
+async function deleteRoutine (rId, TokenString) {
     try {
         const response = await fetch(`${BASEURL}/routines/${rId}`, {
             method: "DELETE",
