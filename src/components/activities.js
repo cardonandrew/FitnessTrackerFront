@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { allActivities } from "../api/api";
-import { Popup, CreateAct } from "./index"
-import { pubRoutinesByActivity } from "../api/activities"
-import './activities.css' 
+import { Popup, CreateAct } from "./index";
+import { pubRoutinesByActivity } from "../api/activities";
+import "./activities.css";
 
 const Activities = (props) => {
     const [activities, setActivities] = useState([]);
     const [pubRoutines, setPubRoutines] = useState([]);
     const [trigger, setTrigger] = useState(false);
     const [createTrigger, setCreateTrigger] = useState(false);
-    const [actId, setActId] = useState('');
-    const { user, tokenString } = props
-    
+    const [actId, setActId] = useState("");
+    const { user, tokenString } = props;
 
     useEffect(() => {
         const getActs = async () => {
@@ -27,19 +26,21 @@ const Activities = (props) => {
     }, []);
 
     const handlePubRoutines = async (actId) => {
-        if(actId >= 0){
-            setPubRoutines(await pubRoutinesByActivity(actId))
-      }
-
-    // const handleAddAct = async (params) => {
-
-    // }
-    
-    }
+        if (actId >= 0) {
+            setPubRoutines(await pubRoutinesByActivity(actId));
+        }
+    };
 
     return (
         <div className="activities">
-            <button id="addbutton" className="ui button" onClick={() => {setCreateTrigger(true)}}>Create Activity</button>
+            <button
+                id="addbutton"
+                className="ui button"
+                onClick={() => {
+                    setCreateTrigger(true);
+                }}>
+                Create Activity
+            </button>
             <div className="ui cards">
                 {activities.map((activity) => {
                     return (
@@ -48,9 +49,24 @@ const Activities = (props) => {
                                 <div className="header">{activity.name}</div>
                                 <span className="meta">id: {activity.id}</span>
                                 <div className="description">{activity.description}</div>
-                                <button className="ui button" onClick={() => {handlePubRoutines(activity.id), setTrigger(true)}} >Routines including this workout</button>
-                                <Popup trigger={trigger} setTrigger={setTrigger} pubRoutines={pubRoutines}>Routines with this Activity:</Popup>
-                                <CreateAct user={user} createTrigger={createTrigger} setCreateTrigger={setCreateTrigger} tokenString={tokenString}></CreateAct>
+                                <button
+                                    className="ui button"
+                                    onClick={() => {
+                                        handlePubRoutines(activity.id), setTrigger(true);
+                                    }}>
+                                    Routines including this workout
+                                </button>
+                                <Popup
+                                    trigger={trigger}
+                                    setTrigger={setTrigger}
+                                    pubRoutines={pubRoutines}>
+                                    Routines with this Activity:
+                                </Popup>
+                                <CreateAct
+                                    user={user}
+                                    createTrigger={createTrigger}
+                                    setCreateTrigger={setCreateTrigger}
+                                    tokenString={tokenString}></CreateAct>
                             </div>
                         </div>
                     );
