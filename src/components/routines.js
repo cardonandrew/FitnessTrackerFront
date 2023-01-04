@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { allRoutines } from "../api/api";
-import { NewRoutineModal } from "./index";
+import { allRoutines, deleteRoutine } from "../api/api";
+import { NewRoutineModal, ViewAct } from "./index";
 
 const Routines = (props) => {
     const { tokenString, user } = props;
     const [routines, setRoutines] = useState([]);
     const [trigger, setTrigger] = useState(false);
+    const [activities, setActivities] = useState([]);
+    const [trigger2, setTrigger2] = useState(false);
 
     useEffect(() => {
         const getRoutines = async () => {
@@ -20,23 +22,10 @@ const Routines = (props) => {
         getRoutines();
     }, []);
 
-    const viewActivityHandler = (obj) => {
-        window.localStorage.removeItem("activityname");
-        window.localStorage.removeItem("activitydescription");
-        window.localStorage.removeItem("activityduration");
-        window.localStorage.removeItem("activitycount");
-        window.localStorage.setItem("activityname", activity.name);
-        window.localStorage.setItem("activitydescription", activity.description);
-        window.localStorage.setItem("activityduration", activity.duration);
-        window.localStorage.setItem("activitycount", activity.count);
-
-        navigate("/activities/" + obj._id);
-    };
-
     return (
         <div className="routines">
             {user ? (
-                <div className="new-routine" >
+                <div className="new-routine">
                     <button className="ui button" onClick={() => setTrigger(true)}>
                         Create a New Routine
                     </button>
@@ -50,17 +39,36 @@ const Routines = (props) => {
                                 <div className="content">
                                     <h3 className="header">{routine.name}</h3>
                                     <p className="goal">{routine.goal}</p>
-                                    <p className="creator">Author: {routine.creatorName}</p>
+                                    <p className="creator">Creator: {routine.creatorName}</p>
+                                    <button
+                                        className="ui button mini"
+                                        onClick={() => {
+                                            setActivities(routine.activities);
+                                            setTrigger2(true);
+                                        }}>
+                                        Activities with this Routine
+                                    </button>
                                     {user === routine.creatorName ? (
                                         <button
-                                            className="viewActBtn"
-                                            onClick={() => viewActivityHandler(v)}>
-                                            View Activity
+                                            style={{ margin: "3px" }}
+                                            type="submit"
+                                            className="ui button negative mini"
+                                            onClick={() => {
+                                                deleteRoutine(routine.id, tokenString);
+                                            }}>
+                                            Delete
                                         </button>
-                                    ) : (
-                                        <div></div>
-                                    )}
-                                    <NewRoutineModal trigger={trigger} setTrigger={setTrigger} tokenString={tokenString} />
+                                    ) : null}
+                                    <ViewAct
+                                        trigger2={trigger2}
+                                        setTrigger2={setTrigger2}
+                                        activities={activities}
+                                    />
+                                    <NewRoutineModal
+                                        trigger={trigger}
+                                        setTrigger={setTrigger}
+                                        tokenString={tokenString}
+                                    />
                                 </div>
                             </fieldset>
                         );
