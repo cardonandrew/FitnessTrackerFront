@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = (props) => {
-    const {tokenString, user, logOut} = props
+    const { tokenString, user, logOut } = props;
 
     return (
-        <div className="ui menu" style={{'marginBottom': '20px'}}>
+        <div className="ui menu" style={{ marginBottom: "20px" }}>
             <Link className="item" to="/">
                 Home
             </Link>
             <Link className="item" to="/routines">
                 Routines
             </Link>
-            <Link className='item' to="/activities">
+            <Link className="item" to="/activities">
                 Activities
             </Link>
             {tokenString ? (
@@ -29,8 +29,16 @@ const Header = (props) => {
                     Sign Up
                 </Link>
             )}
+            {tokenString ? (
+                <div class="ui label">
+                    <span>
+                        <i aria-hidden="true" class="teal users circular icon"></i>
+                    </span>
+                    {`Hello ${user}!`}
+                </div>
+            ) : null}
         </div>
-    )
-}
+    );
+};
 
 export default Header;
